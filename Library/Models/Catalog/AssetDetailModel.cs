@@ -17,7 +17,7 @@ namespace Library.Models.Catalog
         public string DeweyCallNumber { get; set; }
         public string Status { get; set; }
         public decimal Cost { get; set; }
-        public string CurreneLocation { get; set; }
+        public string CurrentLocation { get; set; }
         public string ImageUrl { get; set; }
         public string PatronName { get; set; }
         public Checkout LatestCheckout { get; set; }

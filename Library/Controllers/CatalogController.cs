@@ -49,7 +49,7 @@ namespace Library.Controllers
                 Status = asset.Status.Name,
                 ImageUrl = asset.ImageUrl,
                 AuthorOrDirector = this.assets.GetAuthorOrDirector(id),
-                CurreneLocation = this.assets.GetCurrentLocation(id).Name,
+                CurrentLocation = this.assets.GetCurrentLocation(id).Name,
                 DeweyCallNumber = this.assets.GetDeweyIndex(id),
                 ISBN = this.assets.GetIsbn(id)
             };
