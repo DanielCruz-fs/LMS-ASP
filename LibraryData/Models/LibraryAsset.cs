@@ -16,9 +16,6 @@ namespace LibraryData.Models
         public int Year { get; set; }
 
         [Required]
-        public Status Status { get; set; }
-
-        [Required]
         public decimal Cost { get; set; }
 
         public string ImageUrl { get; set; }
@@ -27,5 +24,8 @@ namespace LibraryData.Models
         
         //fkeys
         public virtual LibraryBranch Location { get; set; }
+
+        [Required]
+        public Status Status { get; set; }
     }
 }

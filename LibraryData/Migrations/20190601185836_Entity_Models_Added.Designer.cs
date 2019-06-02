@@ -4,14 +4,16 @@ using LibraryData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LibraryData.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20190601185836_Entity_Models_Added")]
+    partial class Entity_Models_Added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -228,24 +230,6 @@ namespace LibraryData.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Status");
-                });
-
-            modelBuilder.Entity("LibraryData.Models.Book", b =>
-                {
-                    b.HasBaseType("LibraryData.Models.LibraryAsset");
-
-                    b.Property<string>("Author")
-                        .IsRequired();
-
-                    b.Property<string>("DeweyIndex")
-                        .IsRequired();
-
-                    b.Property<string>("ISBN")
-                        .IsRequired();
-
-                    b.ToTable("Book");
-
-                    b.HasDiscriminator().HasValue("Book");
                 });
 
             modelBuilder.Entity("LibraryData.Models.Video", b =>
