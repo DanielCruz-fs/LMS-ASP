@@ -1,0 +1,22 @@
+﻿@model Library.Models.Catalog.AssetDetailModel
+
+<div class="container">
+    <div class="page-header">
+        <h2>Vie Library Item</h2>
+    </div>
+</div>
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@Model.ImageUrl"/>
+        </div>
+        <div class="col-md-4">
+            <p>@Model.Title</p>
+            <p>@Model.AuthorOrDirector</p>
+            <p>@Model.Status</p>
+            <p>@Model.Type</p>
+            <p>@Model.CurreneLocation</p>
+        </div>
+    </div>
+</div>

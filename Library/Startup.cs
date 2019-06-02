@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LibraryData;
+using LibraryServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -38,6 +39,9 @@ namespace Library
             //connection to database
             services.AddDbContext<LibraryContext>(options =>
                      options.UseSqlServer(Configuration.GetConnectionString("LibraryConnection")));
+            //dependency injection
+            services.AddSingleton(Configuration);
+            services.AddScoped<ILibraryAsset, LibraryAssetService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
