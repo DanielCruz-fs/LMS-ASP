@@ -16,12 +16,13 @@ namespace LibraryData
         string GetCurrentCheckoutPatron(int assetId);
         string GetCurrentHoldPatronName(int holdId);
         DateTime GetCurrentHoldPlaced(int holdId);
+        bool IsCheckedOut(int id);
 
         void MarkLost(int assetId);
         void MarkFound(int assetId);
         void Add(Checkout newCheckout);
         void CheckOutItem(int assetId, int libraryCardId);
-        void CheckInItem(int assetId, int libraryCardId);
+        void CheckInItem(int assetId);
         void PlaceHold(int assetId, int libraryCardId);
 
 

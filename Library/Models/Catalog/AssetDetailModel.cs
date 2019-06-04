@@ -30,4 +30,5 @@ namespace Library.Models.Catalog
         public string PatronName { get; set; }
         public DateTime HoldPlaced { get; set; }
     }
+
 }

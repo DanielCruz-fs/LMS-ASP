@@ -98,7 +98,7 @@ namespace LibraryServices
             this.context.SaveChanges();
         }
 
-        public void CheckInItem(int assetId, int libraryCardId)
+        public void CheckInItem(int assetId)
         {
             var now = DateTime.Now;
             var item = this.context.LibraryAssets.FirstOrDefault(a => a.Id == assetId);
@@ -115,7 +115,8 @@ namespace LibraryServices
             //if there are holds, checkout the item to the librarycard with the earliest hold
             if (currentHolds.Any())
             {
-                this.CheckoutToEarliestHold(assetId, currentHolds); 
+                this.CheckoutToEarliestHold(assetId, currentHolds);
+                return;
             }
             //otherwise, update the item status to available
             this.UpdateAssetStatus(assetId, "Available");
@@ -135,7 +136,7 @@ namespace LibraryServices
 
         public void CheckOutItem(int assetId, int libraryCardId)
         {
-            if (this.IsCheckOut(assetId))
+            if (this.IsCheckedOut(assetId))
             {
                 return;
             }
@@ -173,7 +174,7 @@ namespace LibraryServices
             return now.AddDays(30);
         }
 
-        private bool IsCheckOut(int assetId)
+        public bool IsCheckedOut(int assetId)
         {
             return this.context.Checkouts.Where(co => co.LibraryAsset.Id == assetId).Any();
         }
@@ -181,7 +182,7 @@ namespace LibraryServices
         public void PlaceHold(int assetId, int libraryCardId)
         {
             var now = DateTime.Now;
-            var asset = this.context.LibraryAssets.FirstOrDefault(a => a.Id == assetId);
+            var asset = this.context.LibraryAssets.Include(a => a.Status).FirstOrDefault(a => a.Id == assetId);
             var card = this.context.LibraryCards.FirstOrDefault(c => c.Id == libraryCardId);
 
             if (asset.Status.Name == "Available")
@@ -230,7 +231,7 @@ namespace LibraryServices
 
             var cardId = checkout.LibraryCard.Id;
             var patron = this.context.Patrons.Include(p => p.LibraryCard)
-                                             .FirstOrDefault(p => p.LibraryCard.Id == assetId);
+                                             .FirstOrDefault(c => c.LibraryCard.Id == cardId);
 
             return patron.FirstName + " " + patron.LastName;
         }
