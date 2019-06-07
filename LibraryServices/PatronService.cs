@@ -31,7 +31,7 @@ namespace LibraryServices
         public IEnumerable<Patron> GetAll()
         {
             return this.context.Patrons.Include(patron => patron.LibraryCard)
-                                       .Include(patron => patron.LibraryBranch)
+                                       .Include(patron => patron.LibraryBranch);
         }
 
         public IEnumerable<CheckoutHistory> GetCheckoutHistory(int patronId)

@@ -14,7 +14,7 @@ namespace Library.Models.Patron
         
         public string FullName
         {
-            get { return this.FirstName + " " + this.LastName }
+            get { return this.FirstName + " " + this.LastName; }
         }
 
         public int LibraryCardId { get; set; }
