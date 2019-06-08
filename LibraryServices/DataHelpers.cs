@@ -25,7 +25,9 @@ namespace LibraryServices
 
         public static string HumanizeDay(int number)
         {
-            return Enum.GetName(typeof(DayOfWeek), number);
+            // our data correlates or starts with 1 as Sunday but c# starts wih 0 as Sunday
+            // so substruct 1
+            return Enum.GetName(typeof(DayOfWeek), number - 1);
         }
 
         public static string HumanizeTime(int time)

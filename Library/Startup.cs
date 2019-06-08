@@ -44,6 +44,7 @@ namespace Library
             services.AddScoped<ILibraryAsset, LibraryAssetService>();
             services.AddScoped<ICheckout, CheckoutService>();
             services.AddScoped<IPatron, PatronService>();
+            services.AddScoped<ILibraryBranch, LibraryBranchService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
